@@ -1,0 +1,31 @@
+class Solution {
+    public int findMaxLength(int[] nums) {
+        HashMap<Integer,Integer>mp=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0){
+                nums[i]=-1;
+                }
+    }
+       int sum=0;
+        int maxlen=0;
+        int endingIndex=-1;
+        int startIndex=0;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+            if(sum==0){
+                maxlen=i+1;
+                endingIndex=i;
+            }
+            if(mp.containsKey(sum)){
+                if(maxlen<i-mp.get(sum)){
+                    maxlen=i-mp.get(sum);
+                    endingIndex=i;
+                }
+            }
+            else{
+                mp.put(sum,i);
+            }
+            }
+            return maxlen;
+        }
+}
