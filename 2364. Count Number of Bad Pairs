@@ -1,0 +1,31 @@
+class Solution {
+    public int countNicePairs(int[] nums) {
+        int count=0;
+        int M=1000000007;
+        HashMap<Integer,Integer>mp=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int diff=nums[i]-reverseNumber(nums[i]);
+            if(mp.containsKey(diff)){
+                mp.put(diff,mp.get(diff)+1);
+            }
+            else{
+                mp.put(diff,1);
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+            int diff=nums[i]-reverseNumber(nums[i]);
+            count=(count+mp.get(diff)-1)%M;
+            mp.put(diff,mp.get(diff)-1);
+        }
+        return count;
+        }
+        public int reverseNumber(int n){
+            int reverse=0;
+            while(n!=0){
+                int rem=n%10;
+                reverse=reverse*10+rem;
+                n=n/10;
+            }
+         return reverse;
+        }
+        }
