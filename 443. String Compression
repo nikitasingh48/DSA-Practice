@@ -1,0 +1,24 @@
+class Solution {
+    public int compress(char[] chars) {
+        int n=chars.length;
+        int index=0;
+        int i=0;
+        while(i<n){
+            int count=1;
+            char ch=chars[i];
+            while(i<n-1 && chars[i]==chars[i+1]){
+                count++;
+                i++;
+            }
+            chars[index++]=ch;
+            if(count>1){
+                String countStr=String.valueOf(count);
+                for(char c:countStr.toCharArray()){
+                    chars[index++]=c;
+                }
+            }
+            i++;
+            }
+        return index;
+    }
+}
