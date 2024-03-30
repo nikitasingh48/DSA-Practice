@@ -1,0 +1,17 @@
+class Solution {
+    public int heightChecker(int[] heights) {
+        int[]expected= Arrays.copyOf(heights,heights.length);
+        Arrays.sort(expected);
+        int count=0;
+        int left=0;
+        int right=0;
+        while(left<heights.length && right<expected.length){
+            if(heights[left]!=expected[right]){
+                count++;
+            }
+            left++;
+            right++;
+        }
+        return count;
+    }
+}
